@@ -16,11 +16,11 @@ Useful Commands:
 
 `docker ps` - Lists all running containers and gives you some information about the container. You don't need to be in the working folder to use this command.
 
-![docker ps](C:\personal\tutorials\youtube_docker-and-php\docs-images\docker_ps.jpg)
+![docker ps](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-2/docs-images/docker_ps.jpg)
 
 `docker compose ps` - Lists all running services and gives you some information about the service. You need to be in the working folder (wherever the docker-compose.yaml is) in order to use this command.
 
-![docker compose ps](C:\personal\tutorials\youtube_docker-and-php\docs-images\docker_compose_ps.jpg)
+![docker compose ps](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-2/docs-images/docker_compose_ps.jpg)
 
 ---
 
