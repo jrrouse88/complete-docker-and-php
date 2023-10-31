@@ -27,3 +27,39 @@ Useful Commands:
 You can also use the Docker Desktop application to view any running container and get information about them.
 
 By default, docker compose containers will be given a name of the working directory name and the service name. You can give containers names to change this. But, as you can see in the example, not specifying a name will result in `<folder-name>-<service>-<integer>`.
+
+## Chapter Two - PHP Dockerfile
+
+Using created images to build/run a service is one way to create a container. Another way is to have that service point to a local Dockerfile that will create an image for it. Since we want to customize our PHP installation a bit, it's the perfect time to use a Dockerfile for our PHP service.
+
+The convention used in this tutorial will be to have all the service related things in its own folder. So we'll make a new folder called php and put the Dockerfile for our new service that uses PHP inside that new folder.
+
+When building custom images, you have to start from a base image. You can find base images to start from in docker hub. In our case, we want a PHP image. Preferably the newest version of PHP and there are certain images with certain takeaways/add-ons that are hosted on docker hub. Most images will have a default image that may install extras and bloat. Typically, if you see `alpine` in the tag then its a very minimalist version of the image. So we'll look to use an alpine tagged version of the latest PHP version. Since we're using nginx, we also want a fpm tagged version (more on the "why" for this in chapter three).
+
+At the time of writing, the latest version of PHP is some version of 8. So you can go to docker hub and find the php registry then search for `8.` and it should give you a list of the latest added images.
+
+---
+
+https://hub.docker.com/_/php/tags?page=1&ordering=last_updated&name=8.2-fpm-alpine
+
+![docker hub php image](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-2/docs-images/php_image.jpg)
+
+---
+
+Since were building our own image from a base image of PHP, we'll have access to certain commands from that image such as `docker-php-ext-install`. Running this command will allow you to install php extensions which we want to do in our case since we got the alpine version of PHP. We want to add extensions to run MySQL so we install the `pdo` and `pdo_mysql` PHP extensions.
+
+---
+
+### Useful Commands:
+
+You can use docker compose to build the images and run the services. However, if you wanted to build an image used for a service on its own, you can use the following command:
+
+```shell
+docker build -t jrouse:php82 -f php/Dockerfile .
+```
+
+The `-t` flag is for tagging the image and give it a name. The `-f` flag is for designating the Dockerfile location. By default, docker looks in the current working directory for the Dockerfile. Since we want to build a Dockerfile in a different location, we pass the `-f` flag and the route to the Dockerfile. Lastly, the period is the context from which you want to run the command. Since we're in our project folder, were running the command from that folder and looking into the php folder for the Dockerfile.
+
+---
+
+## 
