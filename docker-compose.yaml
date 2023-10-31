@@ -1,0 +1,11 @@
+services:
+  # nginx named web because thats its use... a web server
+  web:
+    # use latest tagged image from nginx on docker hub
+    image: nginx:latest
+    # port 80 on local machine maps to port 80 in the container
+    ports:
+      - "80:80"
+  # php
+  # mysql
+  # redis
