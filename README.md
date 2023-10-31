@@ -16,11 +16,11 @@ Once that's done you actually have all you need to spin up a container and view 
 
 `docker ps` - Lists all running containers and gives you some information about the container. You don't need to be in the working folder to use this command.
 
-![docker ps](.\docs-images\docker_ps.jpg)
+![docker ps](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-3/docs-images/docker_ps.jpg)
 
 `docker compose ps` - Lists all running services and gives you some information about the service. You need to be in the working folder (wherever the docker-compose.yaml is) in order to use this command.
 
-![docker compose ps](.\docs-images\docker_compose_ps.jpg)
+![docker compose ps](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-3/docs-images/docker_compose_ps.jpg)
 
 ---
 
@@ -42,7 +42,7 @@ At the time of writing, the latest version of PHP is some version of 8. So you c
 
 https://hub.docker.com/_/php/tags?page=1&ordering=last_updated&name=8.2-fpm-alpine
 
-![docker hub php image](.\docs-images\php_image.jpg)
+![docker hub php image](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-3/docs-images/php_image.jpg)
 
 ---
 
@@ -65,7 +65,7 @@ The `-t` flag is for tagging the image and give it a name. The `-f` flag is for 
 
 In chapter one, we setup the web service using the nginx image from docker hub and what we got was the default nginx page.
 
-![nginx default page](.\docs-images\nginx_default.jpg)
+![nginx default page](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-3/docs-images/nginx_default.jpg)
 
 We want to setup the configuration to point to wherever we will host our web files. We can take a look at the current default configuration by going into the container using the `docker exec` command.
 
@@ -81,7 +81,7 @@ This command allows you to interact with a shell inside the container. The `sh` 
 
 In order to actually see the configuration you need to know the path to the file. Normally, nginx conf files are stored in `/etc/nginx/conf.d/default.conf`. So once you start the shell for the container you can `cat` that path to view the default nginx configuration file.
 
-![default nginx configuration](.\docs-images\default_nginx.jpg)
+![default nginx configuration](https://raw.githubusercontent.com/jrrouse88/complete-docker-and-php/feature/chapter-3/docs-images/default_nginx.jpg)
 
 The configuration file we create here is very basic. For production, you'd normally point to an alternative configuration that has error handling and whatnot.
 
