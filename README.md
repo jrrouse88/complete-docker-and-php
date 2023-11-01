@@ -90,3 +90,7 @@ Nginx can't handle PHP processing directly. It relies on a separate PHP processo
 Location directives use pathing to apply any child directives. For example, directives inside of `location ~ \.php$` will execute if the requested path ends in .php.
 
 `$` prefixed things inside the conf file are variables which nginx knows the value of.
+
+## Chapter Four - Volume Mounts
+
+Adding a volume key to the docker compose will let docker know to use whatever file you point to as the file for the directed path in the container.
