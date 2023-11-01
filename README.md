@@ -94,3 +94,7 @@ Location directives use pathing to apply any child directives. For example, dire
 ## Chapter Four - Volume Mounts
 
 Adding a volume key to the docker compose will let docker know to use whatever file you point to as the file for the directed path in the container.
+
+## Chapter Five - A Basic Application
+
+Creating a basic app that will do "translations". The first attempt for the translation will pull from db and store in the cache. Subsequent lookups will use the cache instead of the db.
