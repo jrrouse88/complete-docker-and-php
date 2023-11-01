@@ -119,3 +119,21 @@ Volume mount:
       - mysqldata:/var/lib/mysql
 ```
 
+## Chapter Seven - Composer
+
+When doing volume mounts, you run the risk of your mount overwriting places in the container that you don't need overwritten. For example, when we run composer install inside the dockerfile it will generate a vendor folder in the container. It wont show if you exec into the container though because that folder is mounted to our app folder. There are a couple ways to prevent this.
+
+One - In the volumes key where we mount our app to our container location, put the protected location before the mount. This will let docker know that no matter what, that vendor folder is to be "protected" and it will serve that folder from inside the container.
+
+```
+# before
+volumes:
+	- ./app:/var/www/html
+	
+# after
+volumes:
+	- /var/www/html/vendor
+	- ./app:/var/www/html
+```
+
+The second way is to create a second docker compose file to overwrite whatever changes you may need. That will be covered in the next chapter.
