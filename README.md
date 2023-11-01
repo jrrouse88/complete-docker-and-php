@@ -98,3 +98,24 @@ Adding a volume key to the docker compose will let docker know to use whatever f
 ## Chapter Five - A Basic Application
 
 Creating a basic app that will do "translations". The first attempt for the translation will pull from db and store in the cache. Subsequent lookups will use the cache instead of the db.
+
+## Chapter Six - Adding MySQL
+
+One way of volume mounting is to point from a local file to a container location. Another way is to use a volume name and let docker decide the best way of mounting that volume. That is how we'll handle the mysql mount. To do this you add a new key called volumes at the same level as the service key. Inside of that key you add the volume name and leave the value empty. After the empty volume has been created, you can add it as a volume to the service and point to a location in the container.
+
+Volume key:
+
+```docker-compose
+volumes:
+	mysqldata:
+```
+
+Volume mount:
+
+```docker-compose
+  db:
+    image: mysql:8.0
+    volumes:
+      - mysqldata:/var/lib/mysql
+```
+
