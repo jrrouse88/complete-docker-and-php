@@ -137,3 +137,18 @@ volumes:
 ```
 
 The second way is to create a second docker compose file to overwrite whatever changes you may need. That will be covered in the next chapter.
+
+## Chapter Eight - A Development Build
+
+We can create a second docker-compose file that will be used locally. This new file will have all the correct settings we need to work on a site that uses a docker setup. The original, we'll change a bit to account for production environment.
+
+---
+
+### Useful Commands:
+
+`docker compose -f docker-compose.dev.yaml --build -d`
+
+Using the `-f` flag in the up command will allow you to specify a docker-compose file to use for the command.
+
+---
+

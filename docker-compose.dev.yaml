@@ -1,8 +1,8 @@
 services:
   # nginx named web because thats its use... a web server
   web:
-    build:
-      dockerfile: ./nginx/Dockerfile
+    # use latest tagged image from nginx on docker hub
+    image: nginx:latest
     # port 80 on local machine maps to port 80 in the container
     ports:
       - "80:80"
@@ -12,11 +12,15 @@ services:
   app:
     build:
       dockerfile: ./php/Dockerfile
+    volumes:
+      - ./app:/var/www/html
   # mysql
   db:
     image: mysql:8.0
     volumes:
       - mysqldata:/var/lib/mysql
+    ports:
+      - "3306:3306"
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=secret
