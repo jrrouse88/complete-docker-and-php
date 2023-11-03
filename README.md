@@ -166,3 +166,6 @@ Use the `--env-file` path to specify a path to an env file you want to use.
 
 ---
 
+## Chapter Ten - Redis
+
+Redis' default port is 6379.
