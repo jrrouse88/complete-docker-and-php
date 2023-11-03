@@ -152,3 +152,17 @@ Using the `-f` flag in the up command will allow you to specify a docker-compose
 
 ---
 
+## Chapter Nine - Environment Variables
+
+You can use `$` or `${}` to use environment variables inside docker compose files. The curly is normally used if you want to use the variable inside of a string.
+
+---
+
+Useful Commands:
+
+`docker compose --env-file <path-to-env>`
+
+Use the `--env-file` path to specify a path to an env file you want to use.
+
+---
+
