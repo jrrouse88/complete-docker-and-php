@@ -1,6 +1,11 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.2-fpm-alpine as app
 
-RUN docker-php-ext-install pdo pdo_mysql
+# Useful PHP extension installer image, copy binary into your container
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin
+
+# RUN docker-php-ext-install pdo pdo_mysql
+RUN set -eux; \
+  install-php-extensions pdo pdo_mysql
 
 # allow super user - set this if you use composer as a
 # super user at all times like in docker containers
@@ -25,3 +30,17 @@ COPY ./app .
 
 # run composer dump-autoload --optimize
 RUN composer dump-autoload --optimize
+
+
+# Dev Image
+# This stage is meant to be target-built into a separate image
+# https://docs.docker.com/develop/develop-images/multistage-build/#stop-at-a-specific-build-stage
+# https://docs.docker.com/compose/compose-file/#target
+FROM app as app_dev
+
+ENV XDEBUG_MODE=off
+
+COPY ./php/conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN set -eux; \
+  install-php-extensions xdebug

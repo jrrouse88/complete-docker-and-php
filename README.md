@@ -169,3 +169,18 @@ Use the `--env-file` path to specify a path to an env file you want to use.
 ## Chapter Ten - Redis
 
 Redis' default port is 6379.
+
+## Chapter Eleven - Xdebug
+
+Xdebug is a debugger and profiler tool.
+
+When mounting files into the container you as optionally add permissions to it like `:ro` which stands for read only. For example, when mounting the xdebug.ini file into the container, we don't want to be able to write to it. The settings are set, so we can add the `:ro` to the end of the volume line.
+
+`- ./php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro`
+
+You can add environment variables to the container through the command line:
+
+```shell
+XDEBUG_MODE=debug docker compose -f docker-compose.dev.yaml up -d
+```
+
